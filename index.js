@@ -38,6 +38,9 @@ function start(file) {
         break;
     }
   });
+process.on("uncaughtException", (err) => {
+	console.error(err, "Uncaught Exception thrown");
+});
   run.on("exit", (code) => {
     isRunning = false;
     if (code == 1) return process.kill();
