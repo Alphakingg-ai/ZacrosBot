@@ -8,8 +8,9 @@ var app     = express();
 app.set('port', (process.env.PORT || 5000));
 
 //For avoidong Heroku $PORT error
+__path = process.cwd()
 app.get('/', function(request, response) {
-    response.sendFile('index.html');
+    response.sendFile(__path + '/index.html');
 }).listen(app.get('port'), function() {
     console.log('App is running, server is listening on port ', app.get('port'));
 });
