@@ -9,7 +9,7 @@ app.set('port', (process.env.PORT || 5000));
 
 //For avoidong Heroku $PORT error
 app.get('/', function(request, response) {
-    response.send({name: "Tetha"})
+    response.send("Tetha Bot Is Running")
 }).listen(app.get('port'), function() {
     console.log('App is running, server is listening on port ', app.get('port'));
 });
@@ -47,4 +47,9 @@ function start(file) {
     });
   });
 }
+
+process.on("uncaughtException", (err) => {
+	console.error(err, "Uncaught Exception thrown");
+});
+
 start("main.js");
