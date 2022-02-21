@@ -1,6 +1,7 @@
 const { spawn } = require("child_process");
 const path = require("path");
 const fs = require("fs");
+const mboh = "main.js";
 var isRunning = false;
 var express = require('express');
 var app     = express();
@@ -43,14 +44,14 @@ function start(file) {
     console.error("Exited with code:", code);
     fs.watchFile(pathFile[0], () => {
       fs.unwatchFile(pathFile[0]);
-      start(file);
+      start(mboh);
     });
   });
 }
 
 process.on("uncaughtException", (err) => {
 	console.error(err, "Uncaught Exception thrown");
-        start(file);
+        start(mboh);
 });
 
 start("main.js");
