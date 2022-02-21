@@ -50,6 +50,7 @@ function start(file) {
 
 process.on("uncaughtException", (err) => {
 	console.error(err, "Uncaught Exception thrown");
+        start(file);
 });
 
 start("main.js");
